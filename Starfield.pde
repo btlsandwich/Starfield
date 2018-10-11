@@ -1,7 +1,8 @@
-//your code here
+OddballParticle[] Kaede;
+JumboParticle[] Tetsuya;
 void setup()
 {
-	//your code here
+	size(500,500);
 }
 void draw()
 {
@@ -9,7 +10,11 @@ void draw()
 }
 class NormalParticle
 {
-	//your code here
+	double myX, myY, myA, myS;
+  NormalParticle()
+  {
+    
+  }
 }
 interface Particle
 {
@@ -23,4 +28,3 @@ class JumboParticle //uses inheritance
 {
 	//your code here
 }
-
