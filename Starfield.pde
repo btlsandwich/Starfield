@@ -1,59 +1,53 @@
-NormalParticle[] Itsuki;
-public void setup()
+Particle[] Itsuki;
+void setup()
 {
   background(0);
-	size(500,500);
-  Itsuki = new NormalParticle[100];
-  for (int i=0; i < 100; i++)
+	size(800,800);
+  Itsuki = new Particle[1000];
+  //Kaede[] = new OddballParticle();
+  //Tetsuya[] = new JumboParticle();
+  for (int i=0; i < Itsuki.length; i++)
   {
      Itsuki[i] = new NormalParticle();
   }
 }
 void draw()
 {
+  fill(0,10);
+  rect(0,0,width,height);
 	for (int i = 0; i < Itsuki.length; i++)
   {
     Itsuki[i].show();
     Itsuki[i].move();
   }
+
 }
-void mousePressed()
-{
-   redraw(); 
-}
-class NormalParticle
+class NormalParticle implements Particle
 {
 	double myX, myY, myA, myS;
   int myC;
   NormalParticle()
   {
-    myX = 250;
-    myY = 250;
+    myX = myY = 400;
     myA = Math.random()*2*Math.PI;
-    myS = 0.1;
+    myS = Math.random()*10;
     myC = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
   }
   public void show()
   {
     noStroke();
     fill(myC);
-    ellipseMode(CORNERS);
-    ellipse((float)myX,(float)myY,5,5);
+    ellipse((float)myX,(float)myY,6,6);
     //for (int r = 0; r < 100; r++)
     //{
-    //  fill(0,0,0);
     //  ellipse(250,250,r+1,r+1);
     //}
   }
   public void move()
   {
-    for (int z = 0; z < 100; z++)
-    {
-      myX = Math.cos(myA)*myS + myX;
-      myY = Math.sin(myA)*myS + myY;
-    }
-    //if (myS < 10)
-    //  myS = myS + 0.001;
+    myX = Math.cos(myA)*myS + myX;
+    myY = Math.sin(myA)*myS + myY;
+    myA = myA + 0.01;
   }
 }
 interface Particle
@@ -63,17 +57,16 @@ interface Particle
 }
 class OddballParticle implements Particle//uses an interface
 {
-  OddballParticle()
-  {
-      
-  }
+  double myX, myY, myA, myS;
+  int myC;
 	public void show()
   {
     
   }
   public void move()
   {
-    
+    myX = Math.sin(myA)*myS + myX;
+    myY = Math.cos(myA)*myS + myY;
   }
 }
 class JumboParticle implements Particle//uses inheritance
