@@ -4,11 +4,17 @@ void setup()
   background(0);
 	size(800,800);
   Itsuki = new Particle[1000];
-  //Kaede[] = new OddballParticle();
-  //Tetsuya[] = new JumboParticle();
   for (int i=0; i < Itsuki.length; i++)
   {
      Itsuki[i] = new NormalParticle();
+  }
+  for (int j=10; j < 20; j++)
+  {
+     Itsuki[j] = new OddballParticle(); 
+  }
+  for (int k=20; k < 30; k++)
+  {
+     Itsuki[k] = new JumboParticle(); 
   }
 }
 void draw()
@@ -37,11 +43,7 @@ class NormalParticle implements Particle
   {
     noStroke();
     fill(myC);
-    ellipse((float)myX,(float)myY,6,6);
-    //for (int r = 0; r < 100; r++)
-    //{
-    //  ellipse(250,250,r+1,r+1);
-    //}
+    ellipse((float)myX,(float)myY,5,5);
   }
   public void move()
   {
@@ -55,28 +57,33 @@ interface Particle
 	public void show();
   public void move();
 }
-class OddballParticle implements Particle//uses an interface
+class OddballParticle extends NormalParticle//uses an interface
 {
-  double myX, myY, myA, myS;
-  int myC;
 	public void show()
   {
-    
+    noStroke();
+    fill(myC);
+    ellipse((float)myX,(float)myY,(int)(Math.random()*15),(int)(Math.random()*15));
   }
   public void move()
   {
     myX = Math.sin(myA)*myS + myX;
     myY = Math.cos(myA)*myS + myY;
+    myA = myA - 0.01;
   }
 }
-class JumboParticle implements Particle//uses inheritance
+class JumboParticle extends NormalParticle//uses inheritance
 {
 	public void show()
   {
-    
+    noStroke();
+    fill(myC);
+    ellipse((float)myX,(float)myY,15,15);
   }
   public void move()
   {
-    
+    myX = Math.sin(myA)*myS + myX;
+    myY = Math.cos(myA)*myS + myY;
+    myA = myA - 0.01;
   }
 }
