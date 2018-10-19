@@ -2,7 +2,7 @@ Particle[] Itsuki;
 void setup()
 {
   background(0);
-	size(800,800);
+	size(700,700);
   Itsuki = new Particle[1000];
   for (int i=0; i < Itsuki.length; i++)
   {
