@@ -34,7 +34,7 @@ class NormalParticle implements Particle
   int myC;
   NormalParticle()
   {
-    myX = myY = 400;
+    myX = myY = 350;
     myA = Math.random()*2*Math.PI;
     myS = Math.random()*10;
     myC = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
